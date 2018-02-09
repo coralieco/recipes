@@ -1,0 +1,15 @@
+
+<h1>Happy <%= Date.today.strftime("%A")%> !</h1>
+<p>Today's inspiration for recipes</p>
+
+<% @recipes.each do |recipe| %>
+<ul>
+  <li>
+  <h3> <%= recipe.name %> </h3>
+  <%= link_to "See :)", recipe_path(recipe) %>
+  <%= link_to "Delete", recipe_path(recipe),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
+    </li>
+</ul>
+<% end %>

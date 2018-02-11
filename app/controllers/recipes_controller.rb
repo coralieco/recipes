@@ -3,7 +3,8 @@ require 'nokogiri'
 
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    #@recipes = Recipe.all
+    @recipes = Recipe.limit(5).order("RANDOM()")
   end
 
   def show
@@ -16,17 +17,7 @@ class RecipesController < ApplicationController
 
   def create
     # @recipe = Recipe.new(params.require(:recipe).permit(:name))
-    ingredient = 'soupe'
-    url = "http://www.marmiton.org/recettes/recherche.aspx?type=all&aqt=#{ingredient}"
-
-    html_file = open(url).read
-    html_doc = Nokogiri::HTML(html_file)
-
-    html_doc.search('.recipe-card__title').each do |element|
-      @recipe = Recipe.create(name: element.text.strip)
-      puts element.text.strip
-    end
-    # 
+    #
     # if @recipe.save!
     #   redirect_to @recipe
     # else

@@ -3,12 +3,46 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  font-family: 'Indie Flower', cursive;
-  margin-left: 40px;
-  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
 h1 {
   font-weight: bold;
   font-family: 'Indie Flower', cursive;
+}
+
+h3 {
+  color: #64A5A0;
+}
+
+li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+li:hover {
+  text-decoration: none;
+  background-color: #64A5A0;
+  color: white;
+}
+
+li a {
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: none;
+  background-color: #64A5A0;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.recipe_details {
+
 }

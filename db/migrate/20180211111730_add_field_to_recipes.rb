@@ -1,0 +1,6 @@
+class AddFieldToRecipes < ActiveRecord::Migration[5.1]
+  def change
+    add_column :recipes, :link, :string
+    add_column :recipes, :picture, :string
+  end
+end

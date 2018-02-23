@@ -1,0 +1,31 @@
+<h1>Happy <%= Date.today.strftime("%A")%> !</h1>
+<p> All recipes</p>
+<i class="fas fa-chevron-circle-left"></i> <%= link_to 'Back', root_url %>
+
+<div class="container">
+  <div class="row">
+      <% @recipes.each do |recipe| %>
+      <ul>
+        <div class="col-sm">
+        <li class="list-recipes">
+          <h4><%= link_to recipe.name, recipe.link, target: "_blank" %></h4>
+          <h4>Cooked on <%= recipe.save_at.strftime("%B %d")%> </h4>
+          <div class="recipe_details">
+            <%= image_tag "http://#{recipe.picture}", class: "recipe_image" %> <br>
+            <%#= image_tag 'http://power.itp.ac.cn/~jmyang/funny/fun4.jpg', class: "recipe_image" %> <br>
+            <% unless recipe.difficulty.blank? %>
+              <i class="fas fa-eye"></i> Difficulty: <%= recipe.difficulty %> <br>
+            <% end %>
+            <% unless recipe.difficulty.blank? %>
+              <i class="far fa-clock"></i> Time: <%= recipe.time unless recipe.time.nil?  %><br>
+            <% end %>
+            <br>
+            <%= link_to "Remove from my recipes", recipe_unbookmark_path(recipe) %>
+          </div>
+        </li>
+        <i class="fab fa-pagelines"></i>
+        </div>
+      </ul>
+      <% end %>
+  </div>
+</div>

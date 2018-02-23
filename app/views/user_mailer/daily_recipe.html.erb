@@ -1,0 +1,27 @@
+<% @recipes.each do |recipe| %>
+    <h2><%= recipe.name %> tonight, <%= @user.name %> ? </h2>
+    <h3><%= link_to 'Randomize', root_url, target: "_blank" %></h3>
+
+    <h3><%= link_to "Go to recipe!", recipe.link, target: "_blank" %></h3>
+    <%#= image_tag "http://#{recipe.picture}" %> <br>
+    <% unless recipe.difficulty.blank? %>
+      <i class="fas fa-eye"></i> Difficulty: <%= recipe.difficulty %> <br>
+    <% end %>
+    <% unless recipe.difficulty.blank? %>
+      <i class="far fa-clock"></i> Time: <%= recipe.time unless recipe.time.nil?  %><br>
+    <% end %>
+    <br>
+
+    <div class="actions">
+      <% if recipe.day_bookmark == true %>
+        <i class="fas fa-bookmark"></i> Bookmarked!
+        <br>
+        <i class="fas fa-times"></i><%= link_to "Unmark!", recipe_unbookmark_url(recipe) %>
+      <% else %>
+      <i class="far fa-bookmark"></i> <%= link_to "Bookmark for today!", recipe_bookmark_url(recipe) %>
+      <br>
+      <br>
+      <i class="fas fa-sync-alt"> </i> <%= link_to 'Next idea!', root_url, target: "_blank" %>
+      <% end %>
+    </div>
+<% end %>

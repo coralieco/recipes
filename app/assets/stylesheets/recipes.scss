@@ -12,15 +12,12 @@ h1 {
   font-family: 'Indie Flower', cursive;
 }
 
-h3 {
-  color: #64A5A0;
-}
-
-li {
+.list-index-recipes {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   border: 1px solid black;
   border-radius: 20px;
+  padding-bottom: 30px;
 }
 
 li:hover {
@@ -33,16 +30,26 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
-  text-decoration: none;
-  background-color: #64A5A0;
-  color: white;
-}
-
 ul {
   list-style-type: none;
+  padding-left: 0;
 }
 
-.recipe_details {
+.recipe_image {
+  border-radius: 10px;
+  width: 15em;
+}
 
+.list-recipes {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    padding: 15px;
+}
+
+h3 {
+  font-size: 15 px;
+}
+
+.fa-pagelines {
+  font-size: 25px;
 }

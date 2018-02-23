@@ -4,30 +4,34 @@ require 'nokogiri'
 class RecipesController < ApplicationController
   def index
     #@recipes = Recipe.all
-    @recipes = Recipe.limit(5).order("RANDOM()")
+    if Recipe.where(day_bookmark: true).present?
+      @recipes = Recipe.where(day_bookmark: true)
+    else
+      @recipes = Recipe.limit(1).order("RANDOM()")
+    end
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
-
-  def new
-    @recipe = Recipe.new
-  end
-
-  def create
-    # @recipe = Recipe.new(params.require(:recipe).permit(:name))
-    #
-    # if @recipe.save!
-    #   redirect_to @recipe
-    # else
-    #   render :new
-    # end
-  end
-
-  def destroy
-    @recipe = Recipe.find(params[:id])
-    @recipe.destroy
+  def bookmark
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.update(saved: true, save_at: Date.today, day_bookmark: true)
+    # @recipe.save!
     redirect_to recipes_path
   end
+
+  def list_bookmarked_recipes
+    @recipes = Recipe.where(saved: true)
+    #redirect_to list_bookmarked_recipes_recipes_path
+  end
+
+  def unbookmark
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.update(saved: false, day_bookmark: false)
+    redirect_to list_bookmarked_recipes_recipes_path
+  end
+
+  # def destroy
+  #   @recipe = Recipe.find(params[:id])
+  #   @recipe.destroy
+  #   redirect_to recipes_path
+  # end
 end
